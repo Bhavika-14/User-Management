@@ -11,7 +11,6 @@ router.post(
     body('email').isEmail(),
     body('phone_number').isMobilePhone(),
     body('name').isString().trim().notEmpty(),
-    body('profile_image').isURL(),
     body('password').isString().trim().isLength({ min: 6 }),
   ],
   authController.signup
@@ -35,7 +34,6 @@ router.post(
     body('email').isEmail(),
     body('phone_number').isMobilePhone(),
     body('name').isString().trim().notEmpty(),
-    body('profile_image').isURL(),
     body('password').isString().trim().isLength({ min: 6 }),
   ],
   authController.signupAdmin

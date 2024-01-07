@@ -8,13 +8,13 @@ const { body } = require('express-validator');
 const router = express.Router();
 
 // Modify user details (User can modify their own details)
-router.put('/:userId', authenticateToken, authorizeUser, uploadMiddleware.single('profile_image'), userController.modifyUserDetails);
+router.put('/:userId', authenticateToken, uploadMiddleware.single('profile_image'), userController.modifyUserDetails);
 
 // Delete user account (User can delete their own account)
-router.delete('/:userId', authenticateToken, authorizeUser, userController.deleteUser);
+router.delete('/:userId', authenticateToken, userController.deleteUser);
 
 // View all users (Admin access required)
-router.get('/all', authenticateToken, authorizeAdmin, userController.viewAllUsers);
+router.get('/', authenticateToken, authorizeAdmin, userController.viewAllUsers);
 
 // Modify user details by admin (Admin access required)
 router.put('/admin/:userId', authenticateToken, authorizeAdmin, uploadMiddleware.single('profile_image'), userController.modifyUserDetailsByAdmin);
